@@ -12,6 +12,8 @@
 	"author": "Natalia Volkova",
 	"license": "ISC",
 	"devDependencies": {
+		"@types/react-redux": "^7.1.9",
+		"@types/redux": "^3.6.0",
 		"@typescript-eslint/eslint-plugin": "^3.7.1",
 		"@typescript-eslint/parser": "^3.7.1",
 		"copy-webpack-plugin": "^6.0.3",
@@ -40,12 +42,16 @@
 		"webpack-dev-server": "^3.11.0"
 	},
 	"dependencies": {
+		"@redux-saga/core": "^1.1.3",
 		"@types/react": "^16.9.43",
 		"@types/react-dom": "^16.9.8",
 		"@types/react-router-dom": "^5.1.5",
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1",
-		"react-router-dom": "^5.2.0"
+		"react-redux": "^7.2.1",
+		"react-router-dom": "^5.2.0",
+		"redux": "^4.0.5",
+		"redux-saga": "^1.1.3"
 	},
 	"husky": {
 		"hooks": {
