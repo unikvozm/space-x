@@ -54,6 +54,7 @@
 				"assert": "either",
 				"depth": 25
 			}
-		]
+		],
+		"camelcase": ["error", { "properties": "never" }]
 	}
 }

@@ -1,0 +1,39 @@
+@import 'Src/constants/variables.scss';
+
+table.history-table {
+	font-weight: 200;
+	margin: 25px auto;
+	border-collapse: collapse;
+	border: 1px solid $color-grey-2;
+	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1), 0px 10px 20px rgba(0, 0, 0, 0.05),
+		0px 20px 20px rgba(0, 0, 0, 0.05), 0px 30px 20px rgba(0, 0, 0, 0.05);
+	tr {
+		&:hover {
+			background: $color-white-2;
+
+			td {
+				color: $color-grey-1;
+			}
+		}
+	}
+	th,
+	td {
+		color: $color-grey-1;
+		border: 1px solid $color-grey-2;
+		padding: 10px 30px;
+		border-collapse: collapse;
+
+		ul {
+			list-style: none;
+			padding: 0;
+		}
+	}
+	th {
+		background: $active-element;
+		color: $color-white-1;
+		text-transform: uppercase;
+		font-size: 12px;
+		position: sticky;
+		top: 60px;
+	}
+}
