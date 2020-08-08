@@ -1,12 +1,12 @@
 import * as React from 'react'
-import './styles/App.scss'
+import '../styles/App.scss'
 import { Switch, Route, BrowserRouter } from 'react-router-dom'
 import { FrontUrls } from 'Src/constants/FrontUrls'
 import { HomeContainer } from 'Pages/home/containers/Home.container'
 import { HistoryContainer } from 'Pages/history/containers/History.container'
 import { LaunchesContainer } from 'Pages/launches/containers/Launches.container'
-import { NoFoundContainer } from '../noFound/containers/NoFound.container'
-import { Header } from './components/Header/Header.component'
+import { NoFoundContainer } from '../../noFound/containers/NoFound.container'
+import { Header } from '../components/Header/Header.component'
 
 export class App extends React.PureComponent {
 	public render(): JSX.Element {
