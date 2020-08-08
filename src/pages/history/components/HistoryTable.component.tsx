@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import * as React from 'react'
 import { DateFromUTC } from 'Src/utils/date'
 import { IHistory } from '../models/History.model'

@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 export type IHistory = {
 	id: number
 	title?: string
