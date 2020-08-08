@@ -15,7 +15,7 @@
 		line-height: 20px;
 		color: #ffffff;
 
-		@media (max-width: 540px) {
+		@media (max-width: $screen-sm) {
 			font-size: 12px;
 		}
 	}

@@ -103,7 +103,7 @@
 			position: absolute;
 			width: 100%;
 			height: 2px;
-			background-color: $dark-color;
+			background-color: $color-white-1;
 			transition-duration: 0.25s;
 		}
 
@@ -130,21 +130,21 @@
 		padding: 80px 0;
 		list-style: none;
 		background-color: $dark-background;
-		box-shadow: 1px 0px 6px rgba(0, 0, 0, 0.2);
+		box-shadow: $shadow;
 		transition-duration: 0.25s;
 	}
 
 	.menu__item {
 		display: block;
 		padding: 12px 24px;
-		color: $dark-color;
+		color: $color-white-1;
 		font-size: 20px;
 		font-weight: 600;
 		text-decoration: none;
 		transition-duration: 0.25s;
 	}
 
-	@media all and (max-width: 860px) {
+	@media all and (max-width: $screen-md) {
 		.hamburger-menu {
 			display: flex;
 			justify-content: center;

@@ -1,0 +1,19 @@
+@import 'Src/constants/variables.scss';
+
+.home {
+	background-image: url(/assets/images/planet-unsplash.png);
+	background-size: cover;
+	background-position: center;
+
+	.quote,
+	.quote-author {
+		color: $color-white-1;
+		text-align: center;
+		font-size: 24px;
+		font-weight: 300;
+
+		@media (max-width: $screen-sm) {
+			font-size: 14px;
+		}
+	}
+}
