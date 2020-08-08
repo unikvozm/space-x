@@ -10,6 +10,6 @@ interface ComponentProps {
 
 export const RootContainer: React.FC<ComponentProps> = ({ store }: ComponentProps): JSX.Element => (
 	<Provider store={store}>
-		<App name="Natalia" />
+		<App />
 	</Provider>
 )

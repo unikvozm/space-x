@@ -10,7 +10,7 @@ module.exports = {
 	output: {
 		path: path.resolve(__dirname, 'build'),
 		filename: 'js/[name].bundle.js',
-		// publicPath: '/assets/',
+		publicPath: '/',
 	},
 	devtool: 'source-map',
 	resolve: {
@@ -49,6 +49,10 @@ module.exports = {
 				use: ['style-loader', 'css-loader', 'sass-loader'],
 			},
 		],
+	},
+
+	devServer: {
+		historyApiFallback: true,
 	},
 
 	plugins: [
