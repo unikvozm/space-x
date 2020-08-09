@@ -10,6 +10,7 @@ export const convertFetchedLaunchToILaunch = (launches: IFetchedLaunch[]): ILaun
 			payloads: launch.rocket.second_stage.payloads,
 			image: launch.links.mission_patch_small,
 			launch_date: DateFromUTC(launch.launch_date_utc),
+			launch_date_unix: launch.launch_date_unix,
 		}
 	})
 	return res

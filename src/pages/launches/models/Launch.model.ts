@@ -2,6 +2,7 @@ export type ILaunch = {
 	flight_number: number
 	mission_name: string
 	launch_date: string
+	launch_date_unix: number
 	payloads: [
 		{
 			payload_id: string
@@ -18,7 +19,7 @@ export type IFetchedLaunch = {
 	// mission_id: number[]
 	// upcoming: boolean
 	// launch_year: string
-	// launch_date_unix: number
+	launch_date_unix: number
 	launch_date_utc: string
 	// launch_date_local: string
 	// is_tentative: boolean

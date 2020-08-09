@@ -1,0 +1,20 @@
+@import 'Src/constants/variables.scss';
+
+button {
+	border: 1px solid $active-element;
+	background: $color-white-2;
+	color: $active-element;
+	font-size: 14px;
+	line-height: 21px;
+	cursor: pointer;
+
+	&:active {
+		box-shadow: 0 0 0 0 rgba(179, 170, 179, 1);
+	}
+
+	&.active {
+		border: 1px solid $color-grey-2;
+		background: $active-element;
+		color: $color-grey-2;
+	}
+}
