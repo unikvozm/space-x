@@ -12,6 +12,7 @@ export type ILaunch = {
 		}
 	]
 	rocket_id: string
+	rocket_name: string
 	image: string
 }
 
@@ -30,7 +31,7 @@ export type IFetchedLaunch = {
 	// launch_window: number
 	rocket: {
 		rocket_id: string
-		// rocket_name: string
+		rocket_name: string
 		// rocket_type: string
 		// first_stage: {
 		// 	cores: [

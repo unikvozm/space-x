@@ -13,6 +13,7 @@ export const convertFetchedLaunchToILaunch = (launches: IFetchedLaunch[]): ILaun
 			launch_date: DateFromUTC(launch.launch_date_utc),
 			launch_date_unix: launch.launch_date_unix,
 			rocket_id: launch.rocket.rocket_id,
+			rocket_name: launch.rocket.rocket_name,
 		}
 	})
 	return res

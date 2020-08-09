@@ -1,11 +1,11 @@
 import * as React from 'react'
 import { Container } from 'Src/lib/components/Decorators/Container.decorator'
 import { FilterParams } from 'Src/common/models'
-import { Input, Button, OrbitSelect } from 'Src/lib/components'
 import { ILaunch } from '../models/Launch.model'
 import { launchesActions } from '../actions'
 import { launchesSelector } from '../selectors/launches.selectors'
 import { LaunchesCards } from '../components/LaunchesCards.component'
+import { LaunchesForm } from '../components/LaunchesForm.component'
 
 interface ComponentProps {
 	getLaunches: () => void
@@ -53,31 +53,15 @@ export class LaunchesContainer extends React.PureComponent<ComponentProps, Compo
 		if (!launches.length) getLaunches()
 	}
 
-	private onNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+	private onFilterChange = (fieldName: string) => (
+		e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+	) => {
 		const { value } = e.target
 		const { filters } = this.state
-		this.setState({ filters: { ...filters, name: value } })
+		this.setState({ filters: { ...filters, [fieldName]: value } })
 	}
 
-	private onOrbitChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-		const { value } = e.target
-		const { filters } = this.state
-		this.setState({ filters: { ...filters, rockets: value } })
-	}
-
-	private onDateFromChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const { value } = e.target
-		const { filters } = this.state
-		this.setState({ filters: { ...filters, date_from: value } })
-	}
-
-	private onDateToChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const { value } = e.target
-		const { filters } = this.state
-		this.setState({ filters: { ...filters, date_to: value } })
-	}
-
-	private searchHandler = (e: any): void => {
+	private searchHandler = (e: React.FormEvent<HTMLElement>): void => {
 		e.preventDefault()
 		const { filters } = this.state
 		const { setFilters } = this.props
@@ -92,32 +76,16 @@ export class LaunchesContainer extends React.PureComponent<ComponentProps, Compo
 
 	public render() {
 		const { filteredLaunches } = this.props
-		const {
-			filters: { name, date_to, date_from, rockets },
-		} = this.state
+		const { filters } = this.state
 		return (
 			<main>
 				<h1>SpeceX Launches</h1>
-				<form onSubmit={this.searchHandler}>
-					<Input id="name" onChange={this.onNameChange} value={name} type="text" label="Name: " />
-					<Input
-						id="date_from"
-						onChange={this.onDateFromChange}
-						value={date_from}
-						type="date"
-						label="Date from: "
-					/>
-					<Input
-						id="date_to"
-						onChange={this.onDateToChange}
-						value={date_to}
-						type="date"
-						label="Date to: "
-					/>
-					<OrbitSelect onChange={this.onOrbitChange} value={rockets} />
-					<Button type="submit" title="Find" className="active" />
-					<Button type="button" title="Clear" onClick={this.clearForm} />
-				</form>
+				<LaunchesForm
+					onFilterChange={this.onFilterChange}
+					filtersValue={filters}
+					clearForm={this.clearForm}
+					submitForm={this.searchHandler}
+				/>
 
 				{filteredLaunches.length ? (
 					<LaunchesCards data={filteredLaunches} />

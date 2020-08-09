@@ -12,6 +12,7 @@ export const LaunchesCards: React.FC<ComponentProps> = ({ data }: ComponentProps
 				<img src={launch.image} alt="" />
 				<p>{launch.mission_name}</p>
 				<p>{launch.launch_date}</p>
+				<p>Rocket: {launch.rocket_name}</p>
 				<p>Payloads:</p>
 				{launch.payloads.map((payload) => (
 					<ul key={payload.payload_id}>

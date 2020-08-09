@@ -9,7 +9,7 @@ interface ComponentProps {
 	getOrbits?: () => void
 	orbits?: IOrbit[]
 	onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void
-	value: string
+	value?: string
 }
 
 @Container({
@@ -32,7 +32,7 @@ export class OrbitSelect extends React.PureComponent<ComponentProps> {
 			<div className="select">
 				<label htmlFor="orbits">Orbit: </label>
 				<select id="orbits" name="orbit_weight" onChange={onChange} value={value}>
-					<option value="">No orbit</option>
+					<option value="">Any</option>
 					{orbits.map((orbit) => (
 						<option key={orbit.id} value={JSON.stringify(orbit.rockets)}>
 							{orbit.name}
