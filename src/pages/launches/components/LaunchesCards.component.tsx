@@ -3,12 +3,20 @@ import { ILaunch } from '../models/Launch.model'
 
 interface ComponentProps {
 	data: ILaunch[]
+	onClick: (id: number) => void
 }
 
-export const LaunchesCards: React.FC<ComponentProps> = ({ data }: ComponentProps): JSX.Element => (
+export const LaunchesCards: React.FC<ComponentProps> = ({
+	data,
+	onClick,
+}: ComponentProps): JSX.Element => (
 	<div className="card-container">
 		{data.map((launch: ILaunch) => (
-			<div className="card" key={launch.flight_number}>
+			<div
+				className="card"
+				key={launch.flight_number}
+				onClick={() => onClick(launch.flight_number)}
+			>
 				<img src={launch.image} alt="" />
 				<p>{launch.mission_name}</p>
 				<p>{launch.launch_date}</p>

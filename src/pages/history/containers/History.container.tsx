@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Container } from 'Src/lib/components/Decorators/Container.decorator'
+import { Container } from 'Src/lib/Decorators/Container.decorator'
 import { historyActions } from '../actions'
 import { historySelector } from '../selectors/history.selectors'
 import { IHistory } from '../models/History.model'

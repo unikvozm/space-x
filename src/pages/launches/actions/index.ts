@@ -12,6 +12,16 @@ export const setLaunches = (launches: ILaunch[]): BaseAction => ({
 	payload: launches,
 })
 
+export const getLaunch = (id: number): BaseAction => ({
+	type: ActionTypes.GET_LAUNCH,
+	payload: id,
+})
+
+export const setLaunch = (launch: ILaunch): BaseAction => ({
+	type: ActionTypes.SET_LAUNCH,
+	payload: launch,
+})
+
 export const setFilterParams = (params: FilterParams): BaseAction => ({
 	type: ActionTypes.SET_FILTER_PARAMS,
 	payload: params,
@@ -32,4 +42,6 @@ export const launchesActions = {
 	setFilterParams,
 	setOrbits,
 	getRockets,
+	getLaunch,
+	setLaunch,
 }

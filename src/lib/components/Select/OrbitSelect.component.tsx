@@ -2,7 +2,7 @@ import * as React from 'react'
 import { launchesActions } from 'Pages/launches/actions'
 import { launchesSelector } from 'Pages/launches/selectors/launches.selectors'
 import { IOrbit } from 'Pages/launches/models/Rocket.model'
-import { Container } from '../Decorators/Container.decorator'
+import { Container } from '../../Decorators/Container.decorator'
 import './Select.scss'
 
 interface ComponentProps {

@@ -7,6 +7,8 @@ import { IOrbit } from '../models/Rocket.model'
 
 const getLaunches = (state: IStore): ILaunch[] => state.launches.launches.launches
 
+const getLaunch = (state: IStore): ILaunch | null => state.launches.launches.launch
+
 const getFilters = (state: IStore): FilterParams => state.launches.launches.filterParams
 
 const getOrbits = (state: IStore): IOrbit[] => state.launches.launches.orbits
@@ -32,6 +34,7 @@ const getFilteredLaunches = createSelector([getFilters, getLaunches], (params, l
 
 export const launchesSelector = {
 	getLaunches,
+	getLaunch,
 	getFilters,
 	getFilteredLaunches,
 	getOrbits,

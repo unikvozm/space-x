@@ -1,0 +1,43 @@
+@import 'Src/constants/variables.scss';
+
+.modal {
+	background-color: rgba(0, 0, 0, 0.4);
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	overflow: auto;
+	padding-top: 80px;
+
+	&-content {
+		background-color: $color-white-1;
+		width: 70%;
+		max-width: 640px;
+		height: 70%;
+		margin: auto;
+		padding: 10px;
+		border: 1px solid $color-grey-1;
+		border-radius: 20px;
+	}
+
+	&-info {
+		background-color: $color-white-2;
+		border: 1px solid $color-white-2;
+	}
+
+	.close {
+		color: $color-grey-2;
+		float: right;
+		font-size: 25px;
+		font-weight: bold;
+
+		&:hover,
+		&:focus {
+			color: $color-grey-1;
+			text-decoration: none;
+			cursor: pointer;
+		}
+	}
+}

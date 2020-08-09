@@ -7,18 +7,22 @@ export type LaunchesState = {
 	launches: ILaunch[]
 	filterParams: FilterParams
 	orbits: IOrbit[]
+	launch: ILaunch | null
 }
 
 export const InitialState: LaunchesState = {
 	launches: [],
 	filterParams: {},
 	orbits: [],
+	launch: null,
 }
 
 export const LaunchesReducer = (state: LaunchesState = InitialState, action: BaseAction) => {
 	switch (action.type) {
 		case ActionTypes.SET_LAUNCHES:
 			return { ...state, launches: action.payload }
+		case ActionTypes.SET_LAUNCH:
+			return { ...state, launch: action.payload }
 		case ActionTypes.SET_FILTER_PARAMS:
 			return { ...state, filterParams: action.payload }
 		case ActionTypes.SET_ORBITS:

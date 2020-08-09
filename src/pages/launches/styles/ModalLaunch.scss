@@ -1,0 +1,12 @@
+@import 'Src/constants/variables.scss';
+
+.photo-container {
+	display: flex;
+	width: 100%;
+	overflow-x: scroll;
+
+	.photo {
+		width: 150px;
+		padding: 3px;
+	}
+}

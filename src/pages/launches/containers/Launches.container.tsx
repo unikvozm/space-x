@@ -1,17 +1,20 @@
 import * as React from 'react'
-import { Container } from 'Src/lib/components/Decorators/Container.decorator'
+import { Container } from 'Src/lib/Decorators/Container.decorator'
 import { FilterParams } from 'Src/common/models'
 import { ILaunch } from '../models/Launch.model'
 import { launchesActions } from '../actions'
 import { launchesSelector } from '../selectors/launches.selectors'
 import { LaunchesCards } from '../components/LaunchesCards.component'
 import { LaunchesForm } from '../components/LaunchesForm.component'
+import { ModalLaunch } from '../components/ModalLaunch.component'
 
 interface ComponentProps {
 	getLaunches: () => void
 	launches: ILaunch[]
 	setFilters: (params: FilterParams) => void
 	filteredLaunches: ILaunch[]
+	getLaunch: (id: number) => void
+	selectedLaunch: ILaunch | null
 }
 
 interface ComponentState {
@@ -21,6 +24,7 @@ interface ComponentState {
 		date_to: string
 		rockets: string
 	}
+	showModal: boolean
 }
 
 const initialState = {
@@ -30,16 +34,19 @@ const initialState = {
 		date_to: '',
 		rockets: '',
 	},
+	showModal: false,
 }
 
 @Container({
 	actions: {
 		getLaunches: launchesActions.getLaunches,
 		setFilters: launchesActions.setFilterParams,
+		getLaunch: launchesActions.getLaunch,
 	},
 	selectors: {
 		launches: launchesSelector.getLaunches,
 		filteredLaunches: launchesSelector.getFilteredLaunches,
+		selectedLaunch: launchesSelector.getLaunch,
 	},
 })
 export class LaunchesContainer extends React.PureComponent<ComponentProps, ComponentState> {
@@ -74,9 +81,19 @@ export class LaunchesContainer extends React.PureComponent<ComponentProps, Compo
 		setFilters(initialState.filters)
 	}
 
+	private closeModal = (): void => {
+		this.setState({ showModal: false })
+	}
+
+	private openModal = (id: number): void => {
+		const { getLaunch } = this.props
+		this.setState({ showModal: true })
+		getLaunch(id)
+	}
+
 	public render() {
-		const { filteredLaunches } = this.props
-		const { filters } = this.state
+		const { filteredLaunches, selectedLaunch } = this.props
+		const { filters, showModal } = this.state
 		return (
 			<main>
 				<h1>SpeceX Launches</h1>
@@ -88,10 +105,11 @@ export class LaunchesContainer extends React.PureComponent<ComponentProps, Compo
 				/>
 
 				{filteredLaunches.length ? (
-					<LaunchesCards data={filteredLaunches} />
+					<LaunchesCards data={filteredLaunches} onClick={this.openModal} />
 				) : (
 					<p>There is no data</p>
 				)}
+				<ModalLaunch isShown={showModal} close={this.closeModal} launch={selectedLaunch} />
 			</main>
 		)
 	}
