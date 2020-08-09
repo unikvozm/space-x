@@ -1,12 +1,19 @@
 import axios from 'axios'
 import { FetchedUrls } from 'Src/constants/FetchedUrls'
-import { ILaunch } from '../models/Launch.model'
+import { IFetchedLaunch } from '../models/Launch.model'
+import { IFetchedRocket } from '../models/Rocket.model'
 
-async function getAllLaunches(): Promise<ILaunch[]> {
+async function getAllLaunches(): Promise<IFetchedLaunch[]> {
 	const res = await axios.get(FetchedUrls.launches)
+	return res.data
+}
+
+async function getAllRockets(): Promise<IFetchedRocket[]> {
+	const res = await axios.get(FetchedUrls.rockets)
 	return res.data
 }
 
 export const launchesApi = {
 	getAllLaunches,
+	getAllRockets,
 }

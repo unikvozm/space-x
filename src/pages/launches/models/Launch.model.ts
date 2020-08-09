@@ -8,8 +8,10 @@ export type ILaunch = {
 			payload_id: string
 			nationality: string
 			manufacturer: string
+			orbit: string
 		}
 	]
+	rocket_id: string
 	image: string
 }
 
@@ -28,8 +30,8 @@ export type IFetchedLaunch = {
 	// launch_window: number
 	rocket: {
 		rocket_id: string
-		rocket_name: string
-		rocket_type: string
+		// rocket_name: string
+		// rocket_type: string
 		// first_stage: {
 		// 	cores: [
 		// 		{
@@ -57,8 +59,8 @@ export type IFetchedLaunch = {
 					nationality: string
 					manufacturer: string
 					payload_type: string
-					payload_mass_kg: number
-					payload_mass_lbs: number
+					// payload_mass_kg: number
+					// payload_mass_lbs: number
 					orbit: string
 					// orbit_params: {
 					// 	reference_system: 'geocentric'

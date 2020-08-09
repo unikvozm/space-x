@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Container } from 'Src/lib/components/Decorators/Container.decorator'
 import { FilterParams } from 'Src/common/models'
-import { Input, Button } from 'Src/lib/components'
+import { Input, Button, OrbitSelect } from 'Src/lib/components'
 import { ILaunch } from '../models/Launch.model'
 import { launchesActions } from '../actions'
 import { launchesSelector } from '../selectors/launches.selectors'
@@ -19,6 +19,7 @@ interface ComponentState {
 		name: string
 		date_from: string
 		date_to: string
+		rockets: string
 	}
 }
 
@@ -27,6 +28,7 @@ const initialState = {
 		name: '',
 		date_from: '',
 		date_to: '',
+		rockets: '',
 	},
 }
 
@@ -57,6 +59,12 @@ export class LaunchesContainer extends React.PureComponent<ComponentProps, Compo
 		this.setState({ filters: { ...filters, name: value } })
 	}
 
+	private onOrbitChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+		const { value } = e.target
+		const { filters } = this.state
+		this.setState({ filters: { ...filters, rockets: value } })
+	}
+
 	private onDateFromChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { value } = e.target
 		const { filters } = this.state
@@ -85,7 +93,7 @@ export class LaunchesContainer extends React.PureComponent<ComponentProps, Compo
 	public render() {
 		const { filteredLaunches } = this.props
 		const {
-			filters: { name, date_to, date_from },
+			filters: { name, date_to, date_from, rockets },
 		} = this.state
 		return (
 			<main>
@@ -106,6 +114,7 @@ export class LaunchesContainer extends React.PureComponent<ComponentProps, Compo
 						type="date"
 						label="Date to: "
 					/>
+					<OrbitSelect onChange={this.onOrbitChange} value={rockets} />
 					<Button type="submit" title="Find" className="active" />
 					<Button type="button" title="Clear" onClick={this.clearForm} />
 				</form>
